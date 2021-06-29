@@ -21,10 +21,6 @@ public class CorretorComStatusService {
 	@Autowired
 	private WebClient webClientCadastroCorretores;
 
-	@Autowired
-	private WebClient webClientStatusCorretores;
-
-
 	public CorretorComStatus obterPorDocument(String document) throws Exception {
 
 		Mono<CorretorComStatus> monoCorretor = this.webClientCadastroCorretores
@@ -36,7 +32,7 @@ public class CorretorComStatusService {
 			.bodyToMono(CorretorComStatus.class);
 
 
-		Mono<CorretorComStatus> monoStatus = this.webClientStatusCorretores
+		Mono<CorretorComStatus> monoStatus = this.webClientCadastroCorretores
 				.method(HttpMethod.GET)
 				.uri("/brokerData/{code}", monoCorretor.block().getCode())
 				.retrieve()
@@ -57,7 +53,5 @@ public class CorretorComStatusService {
 
 		return corretorComStatus;
 	}
-
-
 
 }

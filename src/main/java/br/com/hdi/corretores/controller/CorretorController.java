@@ -20,14 +20,11 @@ public class CorretorController {
 	public ResponseEntity<RetornoApi> obterCorretorComStatus(@PathVariable String document) {
 
 		try {
-
 			CorretorComStatus corretorComStatus = this.corretorComStatusService.obterPorDocument(document);
-
 			ResponseEntity retornoApiResponseEntity = new ResponseEntity(new RetornoApi<CorretorComStatus>().adicionarEntitadeRetorno(corretorComStatus).getBody(), HttpStatus.OK);
-
 			return retornoApiResponseEntity;
 		} catch (Exception ex) {
-			return new ResponseEntity (new RetornoApi<CorretorComStatus>().adicionarMsgErro(ex.getMessage()), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity (new RetornoApi<CorretorComStatus>().adicionarMsgErro(ex.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}

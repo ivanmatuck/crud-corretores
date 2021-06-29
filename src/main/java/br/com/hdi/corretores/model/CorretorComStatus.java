@@ -15,7 +15,7 @@ public class CorretorComStatus {
 	private String name;
 	private String document;
 	private String code;
-	private Date createDate;
+	private String createDate;
 	private BigDecimal commissionRate;
 	private Boolean active;
 	

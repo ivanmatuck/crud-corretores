@@ -21,7 +21,7 @@ public class RetornoApi <T>{
         return this;
     }
 
-    String message = "";
+    String message;
 
     Boolean success = true;
 
